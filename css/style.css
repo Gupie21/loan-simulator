@@ -1,0 +1,317 @@
+/*
+** No copy styles
+*/
+
+body * {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f1f1f1;
+    height: 100vh;
+    width: 100%;
+}
+
+/*
+** Profiles Styles
+*/
+
+.profiler {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.profiler .profiler-form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.profiler .profiler-form__left {
+    width: 34%;
+    padding: 0px 15px;
+}
+
+.profiler .profiler-form__right {
+    width: 66%;
+    padding: 0px 15px;
+}
+
+@media only screen and (max-width: 800px) {
+    .profiler .profiler-form__left {
+        display: none;
+    }
+    .profiler .profiler-form__right {
+        width: 100%;
+    }
+}
+
+.profiler-form--content {
+    padding: 0.5rem  1.5rem;
+}
+
+.profiler-form--content h2, .profiler-form--content p {
+    color: #fff !important;
+}
+
+.profiler .profiler-form--inner {
+    background: rgb(75, 88, 96);
+    background: linear-gradient(90deg, rgba(75, 88, 96, 1) 0%, rgba(80, 99, 110, 0.86) 100%);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 5px;
+    min-height: 350px;
+    max-height: 500px;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+}
+
+
+
+@media only screen and (max-width: 800px) {
+    .profiler .profiler-form--inner {
+        max-height: unset;
+    }
+}
+
+.profiler .profiler-form__left .profiler-form--inner img {
+    border-radius: 5px 5px 0px 0px;
+}
+
+.profiler .profiler-form__right .profiler-form--inner {
+    padding: 1.5rem;
+}
+
+.profiler .profiler-option {
+    display: none;
+    color: #fff;
+}
+
+.profiler .profiler-option fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.profiler .profiler-option legend {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.profiler .radio-control {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profiler input , .profiler select{
+    padding: 7px;
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid #ffffff;
+    background-color: rgba(80, 99, 110, 0.16);
+    color: #fff;
+}
+
+.profiler select option {
+    background-color: rgba(80, 99, 110, 1);
+    border-radius: 0px 0px 5px 5px;
+}
+
+.profiler .profiler-option__input-group label {
+    margin-bottom: 7px;
+}
+
+.profiler input::placeholder{
+    color: rgba(255, 255, 255, 0.301);
+}
+
+.profiler input,
+.profiler label {
+    font-size: 16px;
+}
+
+.profiler .radio-control input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+}
+
+.profiler .radio-control input[type="radio"] {
+    appearance: none;
+    background-color: rgba(80, 99, 110, 0.86);
+    margin: 0 10px 0 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+}
+
+.profiler .radio-control input[type="radio"] {
+    display: grid;
+    place-content: center;
+}
+
+.profiler .radio-control input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(#d08b2d);
+    background-color: #d08b2d;
+}
+
+.profiler .radio-control input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+.profiler .profiler-option__input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.profiler .personal-data{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.profiler .personal-data .profiler-option__input-group {
+    width: 50%;
+    padding-right: 15px;
+}
+
+@media only screen and (max-width: 800px) {
+    .profiler .personal-data .profiler-option__input-group {
+        width: 100%;
+        padding-right: 0;
+    }
+}
+
+.profiler .profiler-option__input-group .alert {
+    display: none;
+    color: #ff7e7e;
+    padding: 5px 0px 0px 0px;
+    margin: 0;
+}
+
+.profiler-form__steps {
+    margin: 0px 0px 0px auto;
+}
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: auto 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+.step.finish {
+    background-color: #d08b2d;
+}
+
+.profiler .profiler-form .profiler-controller {
+    margin: 15px 15px auto auto;
+}
+
+.profiler button {
+    background-color: #d08b2d;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+}
+
+.profiler #prevBtn {
+    background-color: #bbbbbb;
+}
+
+.profiler .profiler-success , .profiler .profiler-contact{
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.profiler .profiler-contact {
+    text-align: center;
+}
+
+.profiler .profiler-success h2{
+    color: #50636e;
+} 
+
+.profiler .profiler-success p{
+    text-align: center;
+} 
+.profiler .profiler-success .profiler-success__data , .profiler .profiler-contact{
+    max-width: 450px;
+    padding: 2.5rem;
+    background: rgb(75, 88, 96);
+    background: linear-gradient(90deg, rgba(75, 88, 96, 1) 0%, rgba(80, 99, 110, 0.86) 100%);
+    border-radius: 5px;
+    margin: 15px 0px;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+}
+
+.profiler .profiler-contact h2 , .profiler .profiler-contact h2 span{
+    font-size: 36px !important;
+}
+
+.profiler .profiler-contact p {
+    font-size: 17px !important;
+}
+
+.profiler .profiler-contact h2, .profiler .profiler-contact h2 span, .profiler .profiler-contact p{
+    color: #fff !important;
+}
+
+.profiler .profiler-success .profiler-success__data .value-text, .profiler .profiler-success .profiler-success__data .value-label {
+    color: #fff !important;
+    font-size: 18px !important;
+}
+
+.profiler .profiler-success .profiler-success__data .value-label{
+    font-weight: 700 !important;
+    margin-top: 15px;
+}
+
+.profiler .profiler-success .profiler-success__data .disclaimer-text{
+    color: #fff !important;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.2;
+    font-size: 12px !important;
+}
+
+.profiler #mortgageForm{
+    display: none;
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <section class="profiler">
+        <form class="profiler-form" id="profilerForm">
+
+            <div class="profiler-form__left">
+                <div class="profiler-form--inner">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80"
+                        alt="">
+                    <div class="profiler-form--content">
+                        <h2>Lorem Title</h2>
+                        <p>Lorem Text</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profiler-form__right">
+                <div class="profiler-form--inner">
+                    <div class="profiler-form__steps">
+                        <span class="step"></span>
+                        <span class="step"></span>
+                        <span class="step"></span>
+                        <span class="step"></span>
+                    </div>
+                    <div class="profiler-option">
+                        <fieldset>
+                            <legend>¿Para qué nececitarás el crédito?</legend>
+                            <div class="radio-control">
+                                <input type="radio" id="q0a1" name="q0" value="q0a1" checked>
+                                <label for="q0a1">Comprar una casa</label>
+                            </div>
+                            <div class="radio-control">
+                                <input type="radio" id="q0a2" name="q0" value="q0a2">
+                                <label for="q0a2">Mejorar mi hipoteca actual</label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="profiler-option">
+                        <div class="profiler-option__input-group">
+                            <label for="q1">¿Cuáto ganas al mes?</label>
+                            <input type="number" id="q1" min="6251" placeholder="Ingreso mínimo de $6,250">
+                            <span class="alert">Ingresa un número</span>
+                            <span class="alert">Tus ingresos deben ser mayores a $6,250</span>
+                        </div>
+                        <div class="profiler-option__input-group">
+                            <label for="q2">¿Cómo compruebas ingresos?</label>
+                            <select name="pets" id="q2">
+                                <option value="">--Seleccione--</option>
+                                <option value="q2a1">Recibo de nómina</option>
+                                <option value="q2a2">Estados de cuenta</option>
+                                <option value="q2a3">Declaración ante SAT</option>
+                                <option value="q2a4">No compruebo Ingresos</option>
+                            </select>
+                            <span class="alert">Selecciona una opción</span>
+                        </div>
+                        <div class="profiler-option__input-group">
+                            <label for="q3">¿Cómo describes tu historial crediticio?</label>
+                            <select name="pets" id="q3">
+                                <option value="">--Seleccione--</option>
+                                <option value="q3a1">Siempre he pagado mis créditos a tiempo</option>
+                                <option value="q3a2">He tenido atraso en mis pagos de 1 a 60 días</option>
+                                <option value="q3a3">He tenido atraso en mis pagos de 61 días a 12 meses</option>
+                                <option value="q3a4">He tenido atraso en mis pagos por más de 12 meses</option>
+                                <option value="q3a5">Nunca he tenido crédito</option>
+                            </select>
+                            <span class="alert">Selecciona una opción</span>
+                        </div>
+                        <div class="profiler-option__input-group">
+                            <label for="q4">¿Cuándo iniciarás tu trámite hipotecario?</label>
+                            <select name="pets" id="q4">
+                                <option value="">--Seleccione--</option>
+                                <option value="q4a1">Entre 0 y 3 meses</option>
+                                <option value="q4a2">Entre 3 y 6 meses</option>
+                                <option value="q4a3">Entre 6 meses y 1 año</option>
+                                <option value="q4a4">Más de 1 año</option>
+                            </select>
+                            <span class="alert">Selecciona una opción</span>
+                        </div>
+                    </div>
+
+                    <div class="profiler-option">
+                        <div class="profiler-option__input-group">
+                            <label for="q5">¿Cuál es el valor del inmueble que deseas comprar?</label>
+                            <input type="number" id="q5" min="250000" placeholder="$250,000">
+                            <span class="alert">El valor del inmueble no puede ser menor a $250,000</span>
+                        </div>
+
+                        <div class="profiler-option__input-group">
+                            <label for="q6">¿Cuál es el monto de crédito que necesitas?</label>
+                            <input type="number" id="q6" placeholder="$250,000">
+                            <span class="alert">El monto del crédito no puede ser menor a $250,000</span>
+                            <span class="alert"></span>
+                            <span class="alert"></span>
+                        </div>
+
+                        <div class="profiler-option__input-group">
+                            <label for="downPayment">El enganche que deberías tener es de:</label>
+                            <input type="number" id="downPayment" disabled>
+                        </div>
+                        <div class="profiler-option__input-group">
+                            <label for="q7">¿A cuantos años deseas pagar tu crédito?</label>
+                            <select name="pets" id="q7">
+                                <option value="">--Seleccione--</option>
+                                <option value="5">5 años</option>
+                                <option value="10">10 años</option>
+                                <option value="15">15 años</option>
+                                <option value="20">20 años</option>
+                            </select>
+                            <span class="alert">Selecciona una opción</span>
+                        </div>
+                    </div>
+
+                    <div class="profiler-option">
+                        <legend>Datos personales</legend>
+                        <div class="personal-data">
+                            <div class="profiler-option__input-group">
+                                <label for="name">Nombre*</label>
+                                <input type="text" id="name" placeholder="Mínimo 3 caracteres">
+                                <span class="alert">Ingresa tu nombre</span>
+                            </div>
+
+                            <div class="profiler-option__input-group">
+                                <label for="lastname">Apellidos*</label>
+                                <input type="text" id="lastname" placeholder="Mínimo 3 caracteres">
+                                <span class="alert">Ingresa tus apellidos</span>
+                            </div>
+
+                            <div class="profiler-option__input-group">
+                                <label for="email">Email*</label>
+                                <input type="email" id="email" placeholder="ejemplo@email.com">
+                                <span class="alert">Ingresa tu email</span>
+                            </div>
+
+                            <div class="profiler-option__input-group">
+                                <label for="phone">Teléfono*</label>
+                                <input type="number" id="phone" placeholder="Mínimo 10 dígitos">
+                                <span class="alert">Ingresa tu número</span>
+                            </div>
+
+                            <div class="profiler-option__input-group">
+                                <label for="location">Ubicación*</label>
+                                <select name="location" id="location">
+                                    <option value="">--Seleccione--</option>
+                                    <option value="Aguascalientes">Aguascalientes</option>
+                                    <option value="Baja California">Baja California</option>
+                                    <option value="Baja California Sur">Baja California Sur</option>
+                                    <option value="Campeche">Campeche</option>
+                                    <option value="Chiapas">Chiapas</option>
+                                    <option value="Chihuahua">Chihuahua</option>
+                                    <option value="CDMX">Ciudad de México</option>
+                                    <option value="Coahuila">Coahuila</option>
+                                    <option value="Colima">Colima</option>
+                                    <option value="Durango">Durango</option>
+                                    <option value="Estado de México">Estado de México</option>
+                                    <option value="Guanajuato">Guanajuato</option>
+                                    <option value="Guerrero">Guerrero</option>
+                                    <option value="Hidalgo">Hidalgo</option>
+                                    <option value="Jalisco">Jalisco</option>
+                                    <option value="Michoacán">Michoacán</option>
+                                    <option value="Morelos">Morelos</option>
+                                    <option value="Nayarit">Nayarit</option>
+                                    <option value="Nuevo León">Nuevo León</option>
+                                    <option value="Oaxaca">Oaxaca</option>
+                                    <option value="Puebla">Puebla</option>
+                                    <option value="Querétaro">Querétaro</option>
+                                    <option value="Quintana Roo">Quintana Roo</option>
+                                    <option value="San Luis Potosí">San Luis Potosí</option>
+                                    <option value="Sinaloa">Sinaloa</option>
+                                    <option value="Sonora">Sonora</option>
+                                    <option value="Tabasco">Tabasco</option>
+                                    <option value="Tamaulipas">Tamaulipas</option>
+                                    <option value="Tlaxcala">Tlaxcala</option>
+                                    <option value="Veracruz">Veracruz</option>
+                                    <option value="Yucatán">Yucatán</option>
+                                    <option value="Zacatecas">Zacatecas</option>
+                                </select>
+                                <span class="alert">Selecciona tu estado</span>
+                            </div>
+
+                            <div class="profiler-option__input-group">
+                                <label for="city">Ciudad*</label>
+                                <input type="text" id="city" placeholder="Nombre de la ciudad">
+                                <span class="alert">Ingresa tu ciudad</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profiler-controller">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Regresar</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Continuar</button>
+            </div>
+        </form>
+        <div class="profiler-success" id="profilerMessage">
+            <h2 id="congratsMessage">¡Felicidades <span id="nameMessage"></span>!</h2>
+            <p id="successMessage">Todo indica que cumples con los requisitos necesarios para tramitar un crédito
+                hipotecario.</p>
+            <div class="profiler-success__data">
+                <p class="value-label">Valor del inmueble que deseas comprar:</p>
+                <p class="value-text" id="propertyValueMessage"></p>
+                <p class="value-label">Puedes obtener un crédito de hasta:</p>
+                <p class="value-text" id="loanAmountMessage"></p>
+                <p class="value-label">Tu mensualidad promedio sería:</p>
+                <p class="value-text" id="monthlyPaymentMessage"></p>
+                <p class="disclaimer-text">Estos datos son aproxiimaciones de carácter informativo, no garantizan el
+                    obligamiento del crédito.</p>
+            </div>
+            <button class="btn-download" id="btnData">Descargar tabla de amortización</button>
+        </div>
+        <div class="profiler-contact" id="profilerContact">
+            <h2>Felicidades <span id="contactName"></span></h2>
+            <p>Podemos mejorar las condiciones de tu crédito actual</p>
+            <p>En Breve uno de nuestros asesores se pondrá en contacto contigo.</p>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        
+    </script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
