@@ -88,13 +88,14 @@ const percentageMonthlyIncome = 40;
 let form = document.forms['profilerForm'];
 
 let target = document.querySelector('#profilerForm .profiler-form__right .profiler-form--inner');
-let steps = document.querySelector('#profilerForm .profiler-form__right .profiler-form__steps');
+let steps = document.querySelector('#profilerForm .profiler-form__steps');
 
 let formType = 0;
 
 const q0 = document.querySelectorAll('input[name="q0"]');
 q0.forEach(item => {
     const valueOne = item.addEventListener('click', () => {
+        console.log();
         if (item.value == 'q0a1') {
             formType = 0;
             nextPrev(1);
@@ -167,6 +168,19 @@ function nextPrev(n) {
             steps.innerHTML += '<span class="step" id="extraStep"></span>';
         }
     }
+    if (formType == 0 && currentTab == 3) {
+        document.getElementById('creditDestiny').value = 'Comprar una casa';
+    }
+    if (formType == 1 && currentTab == 3) {
+        document.getElementById('creditDestiny').value = 'Mejorar hipoteca';
+    }
+    if (currentTab == 3) {
+        document.getElementById('imageContainerLeft').style.display = 'none';
+        document.getElementById('dataContainerLeft').style.display = 'block';
+        document.getElementById('propertyValue').value = loanData.propertyValue;
+        document.getElementById('loanAmount').value = loanData.loanAmount;
+        document.getElementById('loanPeriod').value = loanData.loanPeriod;
+    }
     if (currentTab == 0) {
         window.location.reload();
     }
@@ -176,6 +190,7 @@ function nextPrev(n) {
 function validateForm() {
     var x, y, i, valid = true;
     x = document.getElementsByClassName("profiler-option");
+    w = x[currentTab].getElementsByTagName("input");
     y = x[currentTab].getElementsByTagName("input");
     z = x[currentTab].getElementsByTagName("select");
 
@@ -236,6 +251,8 @@ function validateForm() {
                     alert.style.display = 'none';
                 });
                 loanData.loanAmount = y[i].value;
+                loanData.downPayment = document.getElementById('q5').value - document.getElementById('q6').value;
+                document.getElementById("downPayment").value = loanData.downPayment;
                 valid = true;
             }
         }

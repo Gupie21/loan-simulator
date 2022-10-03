@@ -56,12 +56,10 @@ body {
 }
 
 .profiler-form--content h2, .profiler-form--content p {
-    color: #fff !important;
+    color: #40516f !important;
 }
 
 .profiler .profiler-form--inner {
-    background: rgb(75, 88, 96);
-    background: linear-gradient(90deg, rgba(75, 88, 96, 1) 0%, rgba(80, 99, 110, 0.86) 100%);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -69,14 +67,17 @@ body {
     min-height: 350px;
     max-height: 500px;
     box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+    background-color: #fff;
 }
-
-
 
 @media only screen and (max-width: 800px) {
     .profiler .profiler-form--inner {
         max-height: unset;
     }
+}
+
+.profiler-form__left .profiler-form--inner {
+    background-color: #e0fde2;
 }
 
 .profiler .profiler-form__left .profiler-form--inner img {
@@ -89,7 +90,7 @@ body {
 
 .profiler .profiler-option {
     display: none;
-    color: #fff;
+    color: #40516f;
 }
 
 .profiler .profiler-option fieldset {
@@ -114,13 +115,13 @@ body {
     padding: 7px;
     width: 100%;
     border-radius: 5px;
-    border: 2px solid #ffffff;
-    background-color: rgba(80, 99, 110, 0.16);
-    color: #fff;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+    color: #40516f;
 }
 
 .profiler select option {
-    background-color: rgba(80, 99, 110, 1);
+    background-color: #fff;
     border-radius: 0px 0px 5px 5px;
 }
 
@@ -129,7 +130,7 @@ body {
 }
 
 .profiler input::placeholder{
-    color: rgba(255, 255, 255, 0.301);
+    color: #40516f;
 }
 
 .profiler input,
@@ -140,19 +141,17 @@ body {
 .profiler .radio-control input[type="radio"] {
     -webkit-appearance: none;
     appearance: none;
-    background-color: #fff;
     margin: 0;
 }
 
 .profiler .radio-control input[type="radio"] {
     appearance: none;
-    background-color: rgba(80, 99, 110, 0.86);
+    background-color: rgb(224, 224, 224);
     margin: 0 10px 0 0;
     font: inherit;
     color: currentColor;
     width: 1.15em;
     height: 1.15em;
-    border: 0.15em solid currentColor;
     border-radius: 50%;
     transform: translateY(-0.075em);
 }
@@ -164,13 +163,13 @@ body {
 
 .profiler .radio-control input[type="radio"]::before {
     content: "";
-    width: 0.65em;
-    height: 0.65em;
+    width: 1em;
+    height: 1em;
     border-radius: 50%;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em var(#d08b2d);
-    background-color: #d08b2d;
+    box-shadow: inset 1em 1em var(#007bff);
+    background-color: #007bff;
 }
 
 .profiler .radio-control input[type="radio"]:checked::before {
@@ -228,7 +227,7 @@ body {
 }
 
 .step.finish {
-    background-color: #d08b2d;
+    background-color: #007bff!important;
 }
 
 .profiler .profiler-form .profiler-controller {
@@ -236,8 +235,10 @@ body {
 }
 
 .profiler button {
-    background-color: #d08b2d;
-    color: #ffffff;
+    background-color: #28a745;
+    width: 245px;
+    height: 50px;
+    color: #fff;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
@@ -249,6 +250,10 @@ body {
 
 .profiler #prevBtn {
     background-color: #bbbbbb;
+}
+
+.btn-download {
+    width: auto !important;
 }
 
 .profiler .profiler-success , .profiler .profiler-contact{
@@ -266,7 +271,7 @@ body {
 }
 
 .profiler .profiler-success h2{
-    color: #50636e;
+    color: #40516f;
 } 
 
 .profiler .profiler-success p{
@@ -275,8 +280,7 @@ body {
 .profiler .profiler-success .profiler-success__data , .profiler .profiler-contact{
     max-width: 450px;
     padding: 2.5rem;
-    background: rgb(75, 88, 96);
-    background: linear-gradient(90deg, rgba(75, 88, 96, 1) 0%, rgba(80, 99, 110, 0.86) 100%);
+    background: #e0fde2;
     border-radius: 5px;
     margin: 15px 0px;
     box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
@@ -291,11 +295,11 @@ body {
 }
 
 .profiler .profiler-contact h2, .profiler .profiler-contact h2 span, .profiler .profiler-contact p{
-    color: #fff !important;
+    color: #40516f !important;
 }
 
 .profiler .profiler-success .profiler-success__data .value-text, .profiler .profiler-success .profiler-success__data .value-label {
-    color: #fff !important;
+    color: #40516f !important;
     font-size: 18px !important;
 }
 
@@ -305,13 +309,17 @@ body {
 }
 
 .profiler .profiler-success .profiler-success__data .disclaimer-text{
-    color: #fff !important;
+    color: #40516f !important;
     text-align: center;
     margin-top: 20px;
     line-height: 1.2;
     font-size: 12px !important;
 }
 
-.profiler #mortgageForm{
+.profiler #mortgageForm, .profiler #dataContainerLeft{
     display: none;
+}
+
+.profiler #dataContainerLeft {
+    padding: 1rem;
 }

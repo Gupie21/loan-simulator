@@ -21,12 +21,31 @@
         <form class="profiler-form" id="profilerForm">
 
             <div class="profiler-form__left">
-                <div class="profiler-form--inner">
+                <div class="profiler-form--inner" id="imageContainerLeft">
                     <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80"
                         alt="">
                     <div class="profiler-form--content">
                         <h2>Lorem Title</h2>
                         <p>Lorem Text</p>
+                    </div>
+                </div>
+                <div class="profiler-form--inner" id="dataContainerLeft">
+                    <legend>Datos del crédito</legend>
+                    <div class="profiler-option__input-group">
+                        <label for="creditDestiny">Destino del crédito</label>
+                        <input type="text" id="creditDestiny" disabled>
+                    </div>
+                    <div class="profiler-option__input-group">
+                        <label for="propertyValue">Valor del Inmueble</label>
+                        <input type="number" id="propertyValue" disabled>
+                    </div>
+                    <div class="profiler-option__input-group">
+                        <label for="loanAmount">Monto del crédito</label>
+                        <input type="number" id="loanAmount" disabled>
+                    </div>
+                    <div class="profiler-option__input-group">
+                        <label for="loanPeriod">Plazo</label>
+                        <input type="number" id="loanPeriod" disabled>
                     </div>
                 </div>
             </div>
