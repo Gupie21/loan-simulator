@@ -153,11 +153,16 @@ function nextPrev(n) {
     document.getElementById("loanAmountMessage").innerHTML += formatter.format(
       loanData.loanAmount
     );
+    document.getElementById('valorInmueble').value = loanData.propertyValue;
+    document.getElementById('creditoMaximo').value = loanData.loanAmountMax;
+    document.getElementById('mensualidad').value = cell.PagoMensual[0];
+    document.getElementById('esProspecto').value = 'Si';
     document.getElementById("monthlyPaymentMessage").innerHTML +=
       cell.PagoMensual[0];
     if (formType == 0) {
         document.getElementById("profilerMessage").style.display = "flex";
       if (loanData.proofIncome == "q2a4") {
+        document.getElementById('esProspecto').value = 'No';
         document.getElementById("btnData").remove();
         document.querySelector(".profiler-success__data").style.display =
           "none";
@@ -168,6 +173,7 @@ function nextPrev(n) {
           '<p class="value-label">Acércate a un Asesor y conoce las alternativas para nuestros clientes sin comprobaciones</p>';
       }
       if (loanData.loanRecord == "q3a4" || loanData.loanRecord == "q3a3") {
+        document.getElementById('esProspecto').value = 'No';
         document.getElementById("btnData").remove();
         document.querySelector(".profiler-success__data").style.display =
           "none";
@@ -178,6 +184,7 @@ function nextPrev(n) {
           '<p class="value-label">Acércate a un Asesor y conoce las alternativas para nuestros clientes con mal historial</p>';
       }
       if (loanData.loanRecord == "q3a5") {
+        document.getElementById('esProspecto').value = 'No';
         document.getElementById("btnData").remove();
         document.querySelector(".profiler-success__data").style.display =
           "none";
@@ -195,18 +202,21 @@ function nextPrev(n) {
       document.getElementById("contactName").innerHTML +=
         personalData.name + " " + personalData.lastName;
       if (loanData.proofIncome == "q2a4") {
+        document.getElementById('esProspecto').value = 'No';
         document.querySelector("#mortgageCongratsMessage").style.display = 'none';
         document.querySelector("#mortgageNoProofMessage").style.display = 'block';
         document.querySelector("#mortgageBadRecordMessage").style.display = 'none';
         document.querySelector("#mortgageNoRecordMessage").style.display = 'none';
         }
       if (loanData.loanRecord == "q3a4" || loanData.loanRecord == "q3a3") {
+        document.getElementById('esProspecto').value = 'No';
         document.querySelector("#mortgageCongratsMessage").style.display = 'none';
         document.querySelector("#mortgageNoProofMessage").style.display = 'none';
         document.querySelector("#mortgageBadRecordMessage").style.display = 'block';
         document.querySelector("#mortgageNoRecordMessage").style.display = 'none';
       }
       if (loanData.loanRecord == "q3a5") {
+        document.getElementById('esProspecto').value = 'No';
         document.querySelector("#mortgageCongratsMessage").style.display = 'none';
         document.querySelector("#mortgageNoProofMessage").style.display = 'none';
         document.querySelector("#mortgageBadRecordMessage").style.display = 'none';
@@ -232,6 +242,7 @@ function nextPrev(n) {
       document.getElementById("imageIndex").style.display = "none";
       document.getElementById("imageLoan").style.display = "none";
       document.getElementById("imageMortgage").style.display = "block";
+      document.getElementById('propertyMortgageChange').innerHTML = 'El valor del inmueble que estas pagando es:';
       if (document.getElementById("q4NoMortgage")) {
         document.getElementById("q4NoMortgage").remove();
       }
@@ -568,8 +579,8 @@ function PPMT(rate, period, periods, present, future, type) {
   );
 }
 
-document.getElementById("q6").addEventListener("keydown", downpaymentAppend);
-document.getElementById("q5").addEventListener("keydown", downpaymentAppend);
+document.getElementById("q6").addEventListener("keyup", downpaymentAppend);
+document.getElementById("q5").addEventListener("keyup", downpaymentAppend);
 
 function downpaymentAppend() {
   loanData.downPayment =
@@ -594,18 +605,53 @@ function generatePdf() {
     return result;
   }
 
+  function imgToBase64(url, callback) {
+    if (!window.FileReader) {
+      callback(null);
+      return;
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function() {
+      var reader = new FileReader();
+      reader.onloadend = function() {
+        callback(reader.result.replace('text/xml', 'image/jpeg'));
+      };
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.send();
+  }
+
+  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  var today = new Date().toLocaleDateString('es-MX', options);
+  var newdat = "Reporte generado el "+ today;
+
+  var img = document.getElementById('pdfHeaderImage');
+
+  imgToBase64(img , function(base64) {
+    base64Img = base64;
+  });
+
   let doc = new jsPDF();
 
   doc.autoTable({ html: ".table" });
 
   let finalY = doc.previousAutoTable.finalY;
-  doc.text("Tabla de amortización", 14, finalY + 15);
+  doc.setFontSize(9);
+  doc.setTextColor(21,94,117);
+  doc.setFontSize(12);
+  doc.addImage(img, 'png', 0, 10, 210, 22);
+  doc.text(newdat, 14, 32);
+  doc.setTextColor(208,139,45);
+  doc.text("Valor del inmueble que deseas comprar: " + formatter.format(loanData.propertyValue), 196, 55, 'right');
+  doc.text("Puedes obtener un crédito de hasta: " + formatter.format(loanData.loanAmountMax), 196, 65, 'right');
+  doc.text("Tu mensualidad promedio: " + cell.PagoMensual[0], 196, 75, 'right');
   doc.autoTable({
-    startY: finalY + 20,
+    startY: finalY + 75,
     head: [["Pago", "Pago Interes", "Pago Capital", "Pago Mensual", "Saldo"]],
     body: generateData(cell),
     headStyles: { fillColor: [80, 99, 110] },
-    alternateRowStyles: { fillColor: [232, 239, 242] },
     tableLineColor: [80, 99, 110],
   });
 
