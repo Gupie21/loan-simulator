@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
+    <title>Perfilador</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -22,11 +22,18 @@
 
             <div class="profiler-form__left">
                 <div class="profiler-form--inner" id="imageContainerLeft">
-                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80"
-                        alt="">
+                    <img class="product-image"
+                        src="https://plus.unsplash.com/premium_photo-1661661583168-659045108488?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                        id="imageIndex">
+                    <img class="product-image hidden-image"
+                        src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80"
+                        id="imageLoan">
+                    <img class="product-image hidden-image"
+                        src="https://images.unsplash.com/photo-1626178793926-22b28830aa30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                        id="imageMortgage">
                     <div class="profiler-form--content">
-                        <h2>Lorem Title</h2>
-                        <p>Lorem Text</p>
+                        <h2>Perfilador</h2>
+                        <p>Somos tu mejor opción</p>
                     </div>
                 </div>
                 <div class="profiler-form--inner" id="dataContainerLeft">
@@ -37,15 +44,15 @@
                     </div>
                     <div class="profiler-option__input-group">
                         <label for="propertyValue">Valor del Inmueble</label>
-                        <input type="number" id="propertyValue" disabled>
+                        <input type="text" id="propertyValue" disabled>
                     </div>
                     <div class="profiler-option__input-group">
                         <label for="loanAmount">Monto del crédito</label>
-                        <input type="number" id="loanAmount" disabled>
+                        <input type="text" id="loanAmount" disabled>
                     </div>
-                    <div class="profiler-option__input-group">
+                    <div class="profiler-option__input-group" id="loanPeriodNoMortgage">
                         <label for="loanPeriod">Plazo</label>
-                        <input type="number" id="loanPeriod" disabled>
+                        <input type="text" id="loanPeriod" disabled>
                     </div>
                 </div>
             </div>
@@ -63,7 +70,7 @@
                             <legend>¿Para qué nececitarás el crédito?</legend>
                             <div class="radio-control">
                                 <input type="radio" id="q0a1" name="q0" value="q0a1" checked>
-                                <label for="q0a1">Comprar una casa</label>
+                                <label for="q0a1">Comprar una casa o propiedad</label>
                             </div>
                             <div class="radio-control">
                                 <input type="radio" id="q0a2" name="q0" value="q0a2">
@@ -74,8 +81,8 @@
 
                     <div class="profiler-option">
                         <div class="profiler-option__input-group">
-                            <label for="q1">¿Cuáto ganas al mes?</label>
-                            <input type="number" id="q1" min="6251" placeholder="Ingreso mínimo de $6,250">
+                            <label for="q1">¿Cuánto ganas al mes?</label>
+                            <input type="number" id="q1" min="6251" placeholder="Ingreso mínimo de $6,250" >
                             <span class="alert">Ingresa un número</span>
                             <span class="alert">Tus ingresos deben ser mayores a $6,250</span>
                         </div>
@@ -102,7 +109,7 @@
                             </select>
                             <span class="alert">Selecciona una opción</span>
                         </div>
-                        <div class="profiler-option__input-group">
+                        <div class="profiler-option__input-group" id="q4NoMortgage">
                             <label for="q4">¿Cuándo iniciarás tu trámite hipotecario?</label>
                             <select name="pets" id="q4">
                                 <option value="">--Seleccione--</option>
@@ -129,12 +136,11 @@
                             <span class="alert"></span>
                             <span class="alert"></span>
                         </div>
-
-                        <div class="profiler-option__input-group">
+                        <div class="profiler-option__input-group" id="downPaymentNoMortgage">
                             <label for="downPayment">El enganche que deberías tener es de:</label>
                             <input type="number" id="downPayment" disabled>
                         </div>
-                        <div class="profiler-option__input-group">
+                        <div class="profiler-option__input-group" id="q7NoMortgage">
                             <label for="q7">¿A cuantos años deseas pagar tu crédito?</label>
                             <select name="pets" id="q7">
                                 <option value="">--Seleccione--</option>
@@ -146,6 +152,8 @@
                             <span class="alert">Selecciona una opción</span>
                         </div>
                     </div>
+
+                    <div class="profiler-option" id="mortgageForm"></div>
 
                     <div class="profiler-option">
                         <legend>Datos personales</legend>
@@ -246,14 +254,40 @@
             <button class="btn-download" id="btnData">Descargar tabla de amortización</button>
         </div>
         <div class="profiler-contact" id="profilerContact">
-            <h2>Felicidades <span id="contactName"></span></h2>
-            <p>Podemos mejorar las condiciones de tu crédito actual</p>
-            <p>En Breve uno de nuestros asesores se pondrá en contacto contigo.</p>
+            <div id="mortgageCongratsMessage">
+                <h2>Felicidades <span id="contactName"></span></h2>
+                <div>
+                    <p>Podemos mejorar las condiciones de tu crédito actual</p>
+                    <p>En Breve uno de nuestros asesores se pondrá en contacto contigo.</p>
+                </div>
+            </div>
+            <div id="mortgageNoProofMessage">
+                <h2>Has concluido tu precalificación </h2>
+                <div>
+                    <p class="value-label">Para acceder a un crédito hipotecario es requisito poder comprobar ingresos</p>
+                    <p class="value-label">Acércate a un Asesor y conoce las alternativas para nuestros clientes sin comprobaciones</p>
+                </div>
+            </div>
+            <div id="mortgageBadRecordMessage">
+                <h2>Has concluido tu precalificación </h2>
+                <div>
+                    <p class="value-label">Para acceder a un crédito hipotecario es requisito tener buen historial de crédito</p>
+                    <p class="value-label">Acércate a un Asesor y conoce las alternativas para nuestros clientes con mal historial</p>
+                </div>
+            </div>
+            <div id="mortgageNoRecordMessage">
+                <h2>Has concluido tu precalificación </h2>
+                <div>
+                    <p class="value-label">Tener historial de crédito es un requisito para la mayoría de las instituciones con las que trabajamos</p>
+                    <p class="value-label">Acércate a un Asesor y conoce las alternativas para nuestros clientes sin historial crediticio</p>
+                </div>
+            </div>
         </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script>
-        
+
     </script>
     <script src="js/index.js"></script>
 </body>

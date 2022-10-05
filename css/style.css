@@ -88,18 +88,18 @@ body {
     padding: 1.5rem;
 }
 
-.profiler .profiler-option {
+.profiler .profiler-option{
     display: none;
     color: #40516f;
 }
 
-.profiler .profiler-option fieldset {
+.profiler .profiler-option fieldset, .profiler .profiler-opt fieldset{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
 }
 
-.profiler .profiler-option legend {
+.profiler .profiler-option legend, .profiler .profiler-opt legend{
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 25px;
@@ -316,7 +316,7 @@ body {
     font-size: 12px !important;
 }
 
-.profiler #mortgageForm, .profiler #dataContainerLeft{
+.profiler #mortgageForm, .profiler #dataContainerLeft, .profiler .hidden-image, .profiler #loanForm, .profiler #mortgageNoProofMessage, .profiler #mortgageBadRecordMessage, .profiler #mortgageNoRecordMessage{
     display: none;
 }
 
