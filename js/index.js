@@ -307,6 +307,7 @@ function nextPrev(n) {
 }
 
 function validateEmail(email) {
+  console.log(email);
   return email.match(
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
@@ -425,6 +426,7 @@ function validateForm() {
           "block";
         y[i].parentNode.getElementsByClassName("alert")[0].innerHTML =
         "Ingresa un correo electrónico válido";
+        return (valid = false);
       }else{
         personalData.email = y[i].value;
         y[i].parentNode.querySelectorAll(".alert").forEach((alert) => {
