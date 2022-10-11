@@ -131,7 +131,17 @@ function showTab(n) {
   }
   if (n == x.length - 1) {
     document.getElementById("nextBtn").innerHTML = "Simular";
+    document.getElementById("nextBtn").setAttribute("type", "submit");
+    document.getElementById("valorInmueble").value = loanData.propertyValue;
+    document.getElementById("creditoMaximo").value = loanData.loanAmountMax;
+    document.getElementById("mensualidad").value = cell.PagoMensual[0];
+    document.getElementById("esProspecto").value = "Si";
+    if (loanData.proofIncome == "q2a4" || loanData.loanRecord == "q3a4" || loanData.loanRecord == "q3a3" || loanData.loanRecord == "q3a5") {
+      document.getElementById("esProspecto").value = "No";
+
+    }
   } else {
+    document.getElementById("nextBtn").setAttribute("type", "");
     document.getElementById("nextBtn").innerHTML = "Continuar";
   }
   fixStepIndicator(n);
@@ -153,16 +163,11 @@ function nextPrev(n) {
     document.getElementById("loanAmountMessage").innerHTML += formatter.format(
       loanData.loanAmount
     );
-    document.getElementById("valorInmueble").value = loanData.propertyValue;
-    document.getElementById("creditoMaximo").value = loanData.loanAmountMax;
-    document.getElementById("mensualidad").value = cell.PagoMensual[0];
-    document.getElementById("esProspecto").value = "Si";
     document.getElementById("monthlyPaymentMessage").innerHTML +=
       cell.PagoMensual[0];
     if (formType == 0) {
       document.getElementById("profilerMessage").style.display = "flex";
       if (loanData.proofIncome == "q2a4") {
-        document.getElementById("esProspecto").value = "No";
         document.getElementById("btnData").remove();
         document.querySelector(".profiler-success__data").style.display =
           "none";
@@ -173,7 +178,6 @@ function nextPrev(n) {
           '<p class="value-label">Acércate a un Asesor y conoce las alternativas para nuestros clientes sin comprobaciones</p>';
       }
       if (loanData.loanRecord == "q3a4" || loanData.loanRecord == "q3a3") {
-        document.getElementById("esProspecto").value = "No";
         document.getElementById("btnData").remove();
         document.querySelector(".profiler-success__data").style.display =
           "none";
@@ -184,7 +188,6 @@ function nextPrev(n) {
           '<p class="value-label">Acércate a un Asesor y conoce las alternativas para nuestros clientes con mal historial</p>';
       }
       if (loanData.loanRecord == "q3a5") {
-        document.getElementById("esProspecto").value = "No";
         document.getElementById("btnData").remove();
         document.querySelector(".profiler-success__data").style.display =
           "none";
@@ -195,6 +198,7 @@ function nextPrev(n) {
           '<p class="value-label">Acércate a un Asesor y conoce las alternativas para nuestros clientes sin historial crediticio</p>';
       }
       // Submit async back connection for property loans here
+      document.getElementById("profilerForm").submit();
     }
     if (formType == 1) {
       document.getElementById("profilerForm").style.display = "none";
@@ -235,6 +239,7 @@ function nextPrev(n) {
           "block";
       }
       // Submit async back connection for mortgage loans here
+      document.getElementById("profilerForm").submit();
     }
   }
   if (currentTab == 0) {
@@ -301,13 +306,18 @@ function nextPrev(n) {
   showTab(currentTab);
 }
 
+function validateEmail(email) {
+  return email.match(
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  );
+}
+
 function validateForm() {
   var x,
     y,
     i,
     valid = true;
   x = document.getElementsByClassName("profiler-option");
-  w = x[currentTab].getElementsByTagName("input");
   y = x[currentTab].getElementsByTagName("input");
   z = x[currentTab].getElementsByTagName("select");
 
@@ -410,10 +420,17 @@ function validateForm() {
       });
     }
     if (y[i].value != "" && y[i].id == "email") {
-      personalData.email = y[i].value;
-      y[i].parentNode.querySelectorAll(".alert").forEach((alert) => {
-        alert.style.display = "none";
-      });
+      if (!validateEmail(y[i].value)) {
+        y[i].parentNode.getElementsByClassName("alert")[0].style.display =
+          "block";
+        y[i].parentNode.getElementsByClassName("alert")[0].innerHTML =
+        "Ingresa un correo electrónico válido";
+      }else{
+        personalData.email = y[i].value;
+        y[i].parentNode.querySelectorAll(".alert").forEach((alert) => {
+          alert.style.display = "none";
+        });
+      }
     }
     if (y[i].value != "" && y[i].id == "phone") {
       personalData.phone = y[i].value;
@@ -699,3 +716,9 @@ function generatePdf() {
 }
 
 document.getElementById("btnData").addEventListener("click", generatePdf);
+
+function formSubmit(event) {
+  event.preventDefault();
+};
+
+document.getElementById("profilerForm").addEventListener("submit", formSubmit, true);

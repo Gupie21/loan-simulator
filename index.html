@@ -18,8 +18,11 @@
 <body>
 
     <section class="profiler">
-        <form class="profiler-form" id="profilerForm">
-
+        <form class="profiler-form" id="profilerForm" method="post" target="hiddenFrame">
+            <input type="text" class="hidden" id="valorInmueble">
+            <input type="text" class="hidden" id="creditoMaximo">
+            <input type="text" class="hidden" id="mensualidad">
+            <input type="text" class="hidden" id="esProspecto">
             <div class="profiler-form__left">
                 <div class="profiler-form--inner" id="imageContainerLeft">
                     <img class="product-image"
@@ -236,6 +239,7 @@
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Regresar</button>
                 <button type="button" id="nextBtn" onclick="nextPrev(1)">Continuar</button>
             </div>
+            <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
         </form>
         <div class="profiler-success" id="profilerMessage">
             <h2 id="congratsMessage">¡Felicidades <span id="nameMessage"></span>!</h2>
@@ -250,10 +254,6 @@
                 <p class="value-text" id="monthlyPaymentMessage"></p>
                 <p class="disclaimer-text">Estos datos son aproxiimaciones de carácter informativo, no garantizan el
                     obligamiento del crédito.</p>
-                <input type="text" class="hidden" id="valorInmueble">
-                <input type="text" class="hidden" id="creditoMaximo">
-                <input type="text" class="hidden" id="mensualidad">
-                <input type="text" class="hidden" id="esProspecto">
             </div>
             <button class="btn-download" id="btnData">Descargar tabla de amortización</button>
         </div>
